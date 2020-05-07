@@ -39,3 +39,6 @@ stamp-h1
 *-test
 
 confdefs.h
+
+# vi
+.*.swp
