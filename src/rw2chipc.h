@@ -30,11 +30,11 @@ extern "C" {
 #define CHILD_READ_FD(P)   ((P)[PARENT_WRITE_PIPE][READ_FD ])
 #define CHILD_WRITE_FD(P)  ((P)[PARENT_READ_PIPE ][WRITE_FD])
 
-typedef __attribute__ ((nonnull (1), warn_unused_result))
-int (*rwchildcb_t) (int pipes[NUM_PIPES][2], void *restrict) ;
+typedef __attribute__ ((warn_unused_result))
+int (*rwchildcb_t) (fd_t rd, fd_t wr, void *restrict) ;
 
-typedef __attribute__ ((nonnull (2), warn_unused_result))
-int (*rwparentcb_t) (pid_t, int pipes[NUM_PIPES][2], void *restrict) ;
+typedef __attribute__ ((warn_unused_result))
+int (*rwparentcb_t) (pid_t, fd_t rd, fd_t wr, void *restrict) ;
 
 int rw2chipc (
 	rwchildcb_t  childcb,  void *restrict childcb_args,

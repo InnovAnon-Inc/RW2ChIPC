@@ -23,34 +23,13 @@ static int mychildcb (void *restrict args) {
    rwchildcb_t                childcb              = cargs->childcb;
    void             *restrict child_args           = cargs->args;
 
-   /* 
-   error_check (r_dup2 (CHILD_READ_FD,  STDIN_FILENO ) == -1) {
-      r_close (CHILD_READ_FD   (*pipes));
-      r_close (CHILD_WRITE_FD  (*pipes));
-      r_close (PARENT_READ_FD  (*pipes));
-      r_close (PARENT_WRITE_FD (*pipes));
-      return -2;
-   }
-   error_check (r_dup2 (CHILD_WRITE_FD, STDOUT_FILENO) == -1) {
-      r_close (CHILD_READ_FD   (*pipes));
-      r_close (CHILD_WRITE_FD  (*pipes));
-      r_close (PARENT_READ_FD  (*pipes));
-      r_close (PARENT_WRITE_FD (*pipes));
-      return -3;
-   }
-   */
-
    /* Close fds not required by child. Also, we don't
    want the exec'ed program to know these existed */
-   /*int err = r_close (CHILD_READ_FD   (*pipes));
-   err    |= r_close (CHILD_WRITE_FD  (*pipes));*/
    int err = r_close (PARENT_READ_FD  (*pipes));
    err    |= r_close (PARENT_WRITE_FD (*pipes));
    error_check (err != 0) { return err; }
  
-   /*execv (argv[0], argv);
-   return -1;*/
-   return childcb (*pipes, child_args);
+   return childcb (CHILD_READ_FD (*pipes), CHILD_WRITE_FD (*pipes), child_args);
 }
 
 typedef struct {
@@ -78,22 +57,7 @@ static int myparentcb (pid_t cpid, void *restrict args) {
       return -1;
    }
    
-   /*char buffer[100];
-   int count;
- 
-   // Write to child’s stdin
-   write (PARENT_WRITE_FD (*pipes), "2^32\n", 5);
- 
-   // Read from child’s stdout
-   count = read (PARENT_READ_FD (*pipes), buffer, sizeof (buffer) - 1);
-   if (count >= 0) {
-   buffer[count] = 0;
-   printf("%s", buffer);
-   } else {
-   printf("IO Error\n");
-   }*/
-
-   error_check ((err = parentcb (cpid, *pipes, parent_args)) != 0) {
+   error_check ((err = parentcb (cpid, PARENT_READ_FD (*pipes), PARENT_WRITE_FD (*pipes), parent_args)) != 0) {
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wunused-result"
       r_close (PARENT_READ_FD  (*pipes));
