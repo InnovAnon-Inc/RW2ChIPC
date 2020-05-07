@@ -7,8 +7,6 @@ extern "C" {
 
 #include <sfork.h>
 
-#define NUM_PIPES (2)
-
 typedef __attribute__ ((warn_unused_result))
 int (*rwchildcb_t) (fd_t rd, fd_t wr, void *restrict) ;
 

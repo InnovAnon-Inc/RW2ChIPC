@@ -13,6 +13,8 @@
    stdin and the other for child's stdout to flow to
    parent's stdin */
 
+#define NUM_PIPES (2)
+
 #define PARENT_WRITE_PIPE  (0)
 #define PARENT_READ_PIPE   (1)
 
