@@ -1,52 +1,41 @@
-# Prerequisites
-*.d
+# autogen.sh
+aclocal.m4
+autom4te.cache
+build-aux
+config.h.in
+config.h.in~
+configure
+Makefile.in
+config.h
+config.log
+config.status
+libtool
+Makefile
+stamp-h1
 
-# Object files
+m4/libtool.m4
+m4/ltoptions.m4
+m4/ltsugar.m4
+m4/ltversion.m4
+m4/lt~obsolete.m4
+
+# configure
+config.h
+config.log
+config.status
+libtool
+Makefile
+stamp-h1
+
+# make
 *.o
-*.ko
-*.obj
-*.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
 *.a
 *.la
 *.lo
+.deps
+.libs
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+# custom
+*-test
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+confdefs.h
