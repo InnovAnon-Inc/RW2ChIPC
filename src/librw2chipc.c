@@ -2,10 +2,6 @@
 #include <config.h>
 #endif
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-
 #include <restart.h>
 
 #include <rw2chipc.h>
