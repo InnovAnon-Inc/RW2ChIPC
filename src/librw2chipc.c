@@ -2,6 +2,8 @@
 #include <config.h>
 #endif
 
+#include <assert.h>
+
 #include <restart.h>
 
 #include <rw2chipc.h>
@@ -75,7 +77,11 @@ static int myparentcb (pid_t cpid, void *restrict args) {
 	#pragma GCC diagnostic pop
       return -1;
    }
-   
+  
+   assert(pipes       != NULL);
+   assert(parentcb    != NULL);
+   assert(parent_args != NULL);
+
    error_check ((err = parentcb (cpid, PARENT_READ_FD (*pipes), PARENT_WRITE_FD (*pipes), parent_args)) != 0) {
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wunused-result"
