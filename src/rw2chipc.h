@@ -9,6 +9,8 @@ extern "C" {
 
 #define NUM_PIPES (2)
 
+/* https://jineshkj.wordpress.com/2006/12/22/how-to-capture-stdin-stdout-and-stderr-of-child-program/ */
+
 /* since pipes are unidirectional, we need two pipes.
    one for data to flow from parent's stdout to child's
    stdin and the other for child's stdout to flow to
