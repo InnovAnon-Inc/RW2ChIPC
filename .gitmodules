@@ -1,0 +1,6 @@
+[submodule "m4"]
+	path = m4
+	url = https://github.com/InnovAnon-Inc/m4-common.git
+[submodule "iSqrt"]
+	path = iSqrt
+	url = https://github.com/InnovAnon-Inc/iSqrt.git
