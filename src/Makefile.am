@@ -10,4 +10,4 @@ dist_bin_SCRIPTS = librw2chipc_config
 
 lib_LTLIBRARIES = librw2chipc.la
 include_HEADERS = rw2chipc.h
-librw2chipc_la_LIBADD = $(LIBRW2CHIPC_LIBADD)
+librw2chipc_la_LIBADD = @LIBRW2CHIPC_LIBADD@
