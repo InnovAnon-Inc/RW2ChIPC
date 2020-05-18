@@ -1,6 +1,6 @@
 AM_CPPFLAGS = -D__STDC_INT64__
 
-lib_LTLIBRARIES
+lib_LTLIBRARIES =
 
 lib_LTLIBRARIES += librw2chipc.la
 include_HEADERS = rw2chipc.h
