@@ -1,13 +1,7 @@
 AM_CPPFLAGS = -D__STDC_INT64__
 
-#if USE_SUBMODULES
-#SUBDIRS = ../glitter
-#AM_CPPFLAGS += -I $(top_srcdir)/glitter/src
-#endif
-
-#include Makefile-LIBADD.inc
-dist_bin_SCRIPTS = librw2chipc_config
-
 lib_LTLIBRARIES = librw2chipc.la
 include_HEADERS = rw2chipc.h
-librw2chipc_la_LIBADD = @LIBRW2CHIPC_LIBADD@
+librw2chipc_la_CPPFLAGS = $(GLITTER_CFLAGS) $(RESTART_CFLAGS) $(SFORK_CFLAGS)
+librw2chipc_la_LIBADD   = $(GLITTER_LIBS)   $(RESTART_LIBS)   $(SFORK_LIBS)
+
